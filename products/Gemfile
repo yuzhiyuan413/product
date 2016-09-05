@@ -21,7 +21,7 @@ gem 'devise'
 
 #bootstrap
 gem 'therubyracer'
-gem 'less-rails', '~> 2.7.1'
+# gem 'less-rails', '~> 2.7.1'
 gem 'twitter-bootstrap-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+# gem 'unicorn'git 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
