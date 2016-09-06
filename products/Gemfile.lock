@@ -231,7 +231,6 @@ DEPENDENCIES
   grape-entity
   jbuilder (~> 2.0)
   jquery-rails
-  less-rails (~> 2.7.1)
   mysql2
   rack-oauth2 (~> 1.0.5)
   rails (= 4.2.6)
