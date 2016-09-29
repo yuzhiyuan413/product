@@ -1,7 +1,7 @@
 module Pd
   class CommonAPI < ApplicationAPI
     resource :products do
-			get "all" do
+			get do
         Product.all
 			end
 
