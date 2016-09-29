@@ -10,11 +10,10 @@ module Pd
       end
       route_param :id do
         get do
-          guard!
+          guard!  #独立guard
           Product.find(params[:id])
         end
-      end
-      
+      end     
   	end
   end
 
