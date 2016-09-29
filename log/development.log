@@ -528,3 +528,62 @@ Processing by ProductsController#index as HTML
   Rendered products/index.html.erb within layouts/application (2.3ms)
   Rendered shared/_header.html.erb (0.0ms)
 Completed 200 OK in 28ms (Views: 26.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/oauth/applications/new" for ::1 at 2016-09-29 14:25:33 +0800
+Processing by Doorkeeper::ApplicationsController#new as HTML
+  Rendered /Users/yuzhiyuan/.rvm/gems/ruby-2.3.1/gems/doorkeeper-4.2.0/app/views/doorkeeper/applications/_form.html.erb (62.9ms)
+  Rendered /Users/yuzhiyuan/.rvm/gems/ruby-2.3.1/gems/doorkeeper-4.2.0/app/views/doorkeeper/applications/new.html.erb within layouts/doorkeeper/admin (66.9ms)
+Completed 200 OK in 159ms (Views: 111.5ms | ActiveRecord: 33.9ms)
+
+
+Started GET "/assets/doorkeeper/bootstrap.min.self-a5176189e4c5305bf3b21c622275d2a8cb9d76bdb20d045e5e00b88f5ab53a7a.css?body=1" for ::1 at 2016-09-29 14:25:33 +0800
+
+
+Started GET "/assets/doorkeeper/admin/application.self-4be093f1305a3e8a26b5294e227d75070ee83fe0a02bcadc7714c375fd64dc09.css?body=1" for ::1 at 2016-09-29 14:25:33 +0800
+
+
+Started POST "/oauth/applications" for ::1 at 2016-09-29 14:27:24 +0800
+Processing by Doorkeeper::ApplicationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RxSNajgcz+D3/yMwO3KZjSkvJemvONN6KazrjjgrbwWrIizG4qDqp01uc4h6rDnguGDwl7pTxQl1DMZmd8aH7A==", "doorkeeper_application"=>{"name"=>"cms", "redirect_uri"=>"http://localhost:12345/auth/demo/callback", "scopes"=>""}, "commit"=>"Submit"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::Application Exists (0.5ms)[0m  SELECT  1 AS one FROM `oauth_applications` WHERE `oauth_applications`.`uid` = BINARY 'aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `oauth_applications` (`name`, `redirect_uri`, `uid`, `secret`, `created_at`, `updated_at`) VALUES ('cms', 'http://localhost:12345/auth/demo/callback', 'aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940', '56a40aaa024fd7e1075f29e09ddbb4350a88ef4342d99a07a710156fcf0ac359', '2016-09-29 06:27:24', '2016-09-29 06:27:24')[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/oauth/applications/1
+Completed 302 Found in 11ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/oauth/applications/1" for ::1 at 2016-09-29 14:27:24 +0800
+Processing by Doorkeeper::ApplicationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1mSELECT  `oauth_applications`.* FROM `oauth_applications` WHERE `oauth_applications`.`id` = 1 LIMIT 1[0m
+  Rendered /Users/yuzhiyuan/.rvm/gems/ruby-2.3.1/gems/doorkeeper-4.2.0/app/views/doorkeeper/applications/_delete_form.html.erb (1.0ms)
+  Rendered /Users/yuzhiyuan/.rvm/gems/ruby-2.3.1/gems/doorkeeper-4.2.0/app/views/doorkeeper/applications/show.html.erb within layouts/doorkeeper/admin (5.6ms)
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/oauth/authorize?client_id=aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940&redirect_uri=http%3A%2F%2Flocalhost%3A12345%2Fauth%2Fdemo%2Fcallback&response_type=code&scope=" for ::1 at 2016-09-29 14:27:50 +0800
+Processing by Doorkeeper::AuthorizationsController#new as HTML
+  Parameters: {"client_id"=>"aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940", "redirect_uri"=>"http://localhost:12345/auth/demo/callback", "response_type"=>"code", "scope"=>""}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mDoorkeeper::Application Load (0.3ms)[0m  [1mSELECT  `oauth_applications`.* FROM `oauth_applications` WHERE `oauth_applications`.`uid` = 'aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940' LIMIT 1[0m
+  [1m[35mDoorkeeper::AccessToken Load (0.3ms)[0m  SELECT  `oauth_access_tokens`.* FROM `oauth_access_tokens` WHERE `oauth_access_tokens`.`application_id` = 1 AND `oauth_access_tokens`.`resource_owner_id` = 2 AND `oauth_access_tokens`.`revoked_at` IS NULL  ORDER BY created_at desc LIMIT 1
+  Rendered /Users/yuzhiyuan/.rvm/gems/ruby-2.3.1/gems/doorkeeper-4.2.0/app/views/doorkeeper/authorizations/new.html.erb within layouts/doorkeeper/application (2.0ms)
+Completed 200 OK in 37ms (Views: 31.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/doorkeeper/application.self-0d3ff3857ecea10dad6f6ab33f534a4df52875a35e5d24bfb4873cbf0b342362.css?body=1" for ::1 at 2016-09-29 14:27:51 +0800
+
+
+Started POST "/oauth/authorize" for ::1 at 2016-09-29 14:28:03 +0800
+Processing by Doorkeeper::AuthorizationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IBP5GZTZq/50TJfqIGWS6o11a4Fttvj8XFLZHZxDBVLMJVi1TmWOuc7dx1JhuzKHHDq+/3jd7o8A8vT1067tuw==", "client_id"=>"aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940", "redirect_uri"=>"http://localhost:12345/auth/demo/callback", "state"=>"", "response_type"=>"code", "scope"=>"", "commit"=>"Authorize"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mDoorkeeper::Application Load (0.2ms)[0m  SELECT  `oauth_applications`.* FROM `oauth_applications` WHERE `oauth_applications`.`uid` = 'aa5f5f262780b4128dcad9764c92e05e66fca3a1b2ff0a27469edfb2982dc940' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mDoorkeeper::AccessGrant Exists (0.3ms)[0m  SELECT  1 AS one FROM `oauth_access_grants` WHERE `oauth_access_grants`.`token` = BINARY 'cdc2acb619b872394e933797aec6f5dd20a153d223046865201fb0cb938e0fc0' LIMIT 1
+  [1m[36mSQL (8.9ms)[0m  [1mINSERT INTO `oauth_access_grants` (`application_id`, `resource_owner_id`, `expires_in`, `redirect_uri`, `scopes`, `token`, `created_at`) VALUES (1, 2, 600, 'http://localhost:12345/auth/demo/callback', '', 'cdc2acb619b872394e933797aec6f5dd20a153d223046865201fb0cb938e0fc0', '2016-09-29 06:28:03')[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:12345/auth/demo/callback?code=cdc2acb619b872394e933797aec6f5dd20a153d223046865201fb0cb938e0fc0
+Completed 302 Found in 29ms (ActiveRecord: 19.4ms)
