@@ -10,6 +10,7 @@ module Pd
       end
       route_param :id do
         get do
+          guard!
           Product.find(params[:id])
         end
       end
