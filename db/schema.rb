@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930034702) do
+ActiveRecord::Schema.define(version: 20160930034703) do
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", limit: 4,     null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160930034702) do
 
   create_table "orders", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.integer  "product_id", limit: 4
+    t.string   "status",     limit: 255
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
