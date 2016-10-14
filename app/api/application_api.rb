@@ -7,7 +7,7 @@ class ApplicationAPI < Grape::API
   error_formatter :json, ->(message, backstrace, options, env) do
 	{
 		status: 'failed',
-		message: message,
+		message: message
 		# error_code: '0000'
 	}
   end

@@ -51,4 +51,6 @@ end
 gem 'rack-oauth2', '~> 1.0.5'
 gem 'grape'
 gem 'grape-entity'
+# gem 'grape-rails-routes'
+gem 'grape_on_rails_routes'
 gem 'doorkeeper'
