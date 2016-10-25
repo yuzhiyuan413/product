@@ -25,3 +25,17 @@ test:
 
 production:
   <<: *default
+
+default_pg: &base
+  adapter: postgresql
+  pool: 5
+  encoding: utf8
+  username: chenxi
+  password: 123456
+  host: 127.0.0.1
+  timeout: 5000
+
+product_development:
+  <<: *base
+  database: test_db
+  

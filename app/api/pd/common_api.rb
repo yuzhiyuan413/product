@@ -53,18 +53,23 @@ module Pd
   		params do
 	      requires :id, type: Integer, desc: ' id.'
 	    end
-		  get ':id' do
-				resouce :products do
+		  segment ':id' do
+				resource :orders do
+					#某用户下的所有订单
 					get do
-						#all products by user
+						Order.where(user_id: params[:id])
+					end
+					#某用户的某个订单
+					get ':order_id' do
+						Order.find(params[:order_id])
 					end
 				end
 		  end	
 	  end
 
-	  get 'users/:id/products' do
+	  # get 'users/:id/products' do
 
-	  end
+	  # end
 
   end
 end

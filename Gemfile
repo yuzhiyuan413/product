@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org/'
+source 'https://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'git 
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +51,9 @@ end
 gem 'rack-oauth2', '~> 1.0.5'
 gem 'grape'
 gem 'grape-entity'
-# gem 'grape-rails-routes'
 gem 'grape_on_rails_routes'
 gem 'doorkeeper'
+# gem 'api_grape_routes', '~> 0.1.1'
+# gem 'api_grape_routes', :path => "~/Desktop/api_grape_routes" # your local gem path
+
+gem 'pg' 
