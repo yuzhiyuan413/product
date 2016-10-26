@@ -1,5 +1,4 @@
 class ApplicationAPI < Grape::API
-  include APIGuard
   version "v1", :using => :path
   format :json
   	# guard_all!
@@ -8,9 +7,7 @@ class ApplicationAPI < Grape::API
 			{
 				status: 'failed',
 				message: message,
-				error_code: '0000'
 			}
 		end
   mount Pd::CommonAPI
-  
 end
