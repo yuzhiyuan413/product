@@ -5,7 +5,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should also create an action method in this controller like this:
   # def twitter
   # end
+  def weibo
+  end
 
+  def callback
+    p '*' * 1000
+    p request.env['omniauth.auth']
+    omniauth = request.env['omniauth.auth']
+  end
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
 
