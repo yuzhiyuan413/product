@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end -%>
-其他方式：<br/><br/>
- <%= link_to "微博登录", user_weibo_omniauth_authorize_path %><br />
-
+其他方式：<br/>
+ <%= link_to "微博", user_weibo_omniauth_authorize_path %> &nbsp | &nbsp <%= link_to "QQ", user_weibo_omniauth_authorize_path %>  &nbsp | &nbsp <%= link_to "微信", user_weibo_omniauth_authorize_path %><br />
+<br/>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end -%>
