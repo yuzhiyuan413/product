@@ -11,6 +11,17 @@ Rails.application.routes.draw do
   resources :users do 
     resources :orders
   end
+
+
+  devise_scope :user do
+    get '/users/auth/weibo/callback' ,:to => 'authentications#weibo'
+    post '/users/auth/weibo/callback' ,:to => 'authentications#weibo'
+  end
+
+
+  # devise_for :users, controllers: {
+  #   omniauth_callbacks: :authentications
+  # }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
