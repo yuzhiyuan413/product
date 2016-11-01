@@ -1,16 +1,18 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  devise :omniauthable, omniauth_providers: [:weibo]
 
   def weibo
+    p "*" * 100
     omniauth_process
   end
   
   protected
   def omniauth_process
     omniauth = request.env['omniauth.auth']
+    p "1" * 100
+    p omniauth
     authentication = Authentication.where(provider: omniauth.provider, uid: omniauth.uid.to_s).first
-
+    p "2"
+    p authentication
     if authentication
       set_flash_message(:notice, :signed_in)
       sign_in(:user, authentication.user)

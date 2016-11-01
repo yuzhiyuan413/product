@@ -7,17 +7,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'products#index'
-  devise_for :users
+
   resources :users do 
     resources :orders
   end
 
-
-  devise_scope :user do
-    get '/users/auth/weibo/callback' ,:to => 'authentications#weibo'
-    post '/users/auth/weibo/callback' ,:to => 'authentications#weibo'
-  end
-
+  # devise_for :users, controllers: {  }
+  devise_for :user, controllers: { sessions: "users/sessions",
+                                    registrations: "users/registrations",
+                                    invitations: "users/invitations",
+                                    confirmations: "users/confirmations",
+                                    omniauth_callbacks: 'users/omniauth_callbacks'}
 
   # devise_for :users, controllers: {
   #   omniauth_callbacks: :authentications
