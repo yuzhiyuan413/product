@@ -17,6 +17,7 @@ gem 'bcrypt','~>3.1.11'
 gem 'jquery-rails' 
 gem 'mysql2'
 gem 'devise'
+gem 'whenever'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 #bootstrap
 gem 'therubyracer'
