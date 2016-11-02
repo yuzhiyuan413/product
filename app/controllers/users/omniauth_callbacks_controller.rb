@@ -1,26 +1,23 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def weibo
-    p "*" * 100
     omniauth_process
   end
   
   protected
   def omniauth_process
     omniauth = request.env['omniauth.auth']
-    p "1" * 100
-    p omniauth
     authentication = Authentication.where(provider: omniauth.provider, uid: omniauth.uid.to_s).first
-    p "2"
-    p authentication
     if authentication
       set_flash_message(:notice, :signed_in)
       sign_in(:user, authentication.user)
       redirect_to root_path
     elsif current_user
       authentication = Authentication.create_from_hash(current_user.id, omniauth)
-      set_flash_message(:notice, :add_provider_success)
-      redirect_to authentications_path
+      current_user.update_authentication(omniauth)
+      #set_flash_message(:notice, :add_provider_success)
+      # redirect_to authentications_path
+      redirect_to root_path
     else
       session[:omniauth] = omniauth.except("extra")
       set_flash_message(:notice, :fill_your_email)
@@ -29,7 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_omniauth_failure_path_for(scope)
-    new_user_registration_path
+    # new_user_registration_path
   end
 
 

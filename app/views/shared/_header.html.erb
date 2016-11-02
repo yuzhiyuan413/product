@@ -1,6 +1,12 @@
 <% if current_user %>
 <div>
-	<%= link_to "退出", destroy_user_session_path %><br />
+
+	<%= link_to current_user.show_name, user_path(current_user) %> &nbsp
+	<%= image_tag(current_user.profile_image) %>&nbsp
+	<% if current_user.provider.blank? %>
+	<%= link_to "绑定微博", user_weibo_omniauth_authorize_path %>&nbsp
+	<% end %>
+	<%= link_to "退出", destroy_user_session_path %>&nbsp
 	<a href="<%= oauth_applications_path%>">应用管理</a>
 </div>
 <% end %>

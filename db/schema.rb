@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029122829) do
+ActiveRecord::Schema.define(version: 20161102061503) do
 
   create_table "authentications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "provider",     limit: 255
+    t.string   "uid",          limit: 255
+    t.string   "access_token", limit: 255
+    t.string   "user_id",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -100,6 +104,10 @@ ActiveRecord::Schema.define(version: 20161029122829) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+    t.string   "current_name",           limit: 255
+    t.string   "profile_image",          limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
