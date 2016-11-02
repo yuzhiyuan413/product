@@ -1,16 +1,21 @@
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end -%>
-其他方式：<br/>
- <%= link_to "微博", user_weibo_omniauth_authorize_path %> &nbsp | &nbsp <%= link_to "QQ", user_weibo_omniauth_authorize_path %>  &nbsp | &nbsp <%= link_to "微信", user_weibo_omniauth_authorize_path %><br />
-<br/>
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end -%>
+<br>
+<div style="float:left;color:#104E8B">其他账号登录：</div>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end -%>
+<div style="margin-top:20px;">
+ <%= link_to user_weibo_omniauth_authorize_path do %>
+   <%= image_tag "weibo.png" %> 新浪微博
+<% end %> &nbsp | &nbsp
+  <%= link_to user_weibo_omniauth_authorize_path do %>
+   <%= image_tag "qq.png" %> 腾讯QQ
+<% end %> &nbsp | &nbsp
+<%= link_to user_weibo_omniauth_authorize_path do %>
+   <%= image_tag "wechat.png" %> 微信
+<% end %>
+</div>
+
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
@@ -19,3 +24,10 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
+<!-- 这两处不知道放到什么位置,待商议 -->
+<%- #if devise_mapping.registerable? && controller_name != 'registrations' %>
+ <!--  <%= link_to "注册", new_registration_path(resource_name) %> &nbsp -->
+<% #end -%>
+<%- #if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+ <!--  <%= link_to "忘记密码", new_password_path(resource_name) %> -->
+<% #end -%>

@@ -43,13 +43,16 @@
                 <% end -%>
                 <%= f.button :submit, value: '登录', class: 'ui big fluid blue icon button login_btn'  %>
               <% end %>
+              <div style="background:#EDEDED;font-size:12px;">
+                 <%= render "devise/shared/links" %>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </body>
-  <%= render "devise/shared/links" %>
+ 
 </html>
 
 
