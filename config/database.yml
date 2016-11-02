@@ -5,7 +5,7 @@ default: &default
   database: products_db
   pool: 5
   username: root
-  password: 123456 
+  password:  
   host: 127.0.0.1
 
 development:
