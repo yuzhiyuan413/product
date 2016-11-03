@@ -3,7 +3,16 @@ body {
     background-color: #FFFFFF;
     font-size: 12px;
 }
+.link_third_login{
+    margin-top:20px;
+    padding-bottom: 10px
+}
+.link_third_login a,.link_third_login a img{
+    height: 25px;
+    line-height: 25px;
+    vertical-align: middle;
 
+}
 .ui.container {
     width: auto;
 }
