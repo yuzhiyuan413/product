@@ -19,7 +19,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # redirect_to authentications_path
       redirect_to root_path
     else
-      session[:omniauth] = omniauth.except("extra")
+      omniauth_temp = {}.tap do |x|
+        w_name = omniauth.except("extra")["info"]["name"]
+        w_profile_image = omniauth.except("extra")["info"]["image"]
+        x[:provider] = omniauth.provider
+        x[:uid] = omniauth.uid
+        x[:current_name] = w_name
+        x[:profile_image] = w_profile_image
+      end
+      session[:omniauth] = omniauth_temp
       set_flash_message(:notice, :fill_your_email)
       redirect_to new_user_registration_url
     end

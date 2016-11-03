@@ -8,9 +8,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # super
+    user = User.find_by(email: sign_up_params[:email])
+    if user
+      flash.alert = "用户已经存在!"
+    else
+      super do |resource|
+        omniauth = session[:omniauth]
+        resource.update(
+          provider: omniauth["provider"], 
+          uid: omniauth["uid"],
+          current_name: omniauth["current_name"],
+          profile_image: omniauth["profile_image"]
+        ) if omniauth
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
