@@ -6,7 +6,7 @@
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
 	</head>
-	<body>
+	<body id="<%= include_body_css %>">
 		<%=render 'shared/header'%>
 		<div style="margin:30px 50px">
 			<%= yield %>

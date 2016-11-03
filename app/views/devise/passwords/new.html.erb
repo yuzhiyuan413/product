@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="login_container">
+  <div class="ui centered stackable grid">
+    <div class="six wide column">
+      <div class="logo"></div>
+      <% if params[:action] == 'create' && flash[:alert].present? %>
+        <div class="ui negative message">
+          <i class="close icon"></i>
+          <p><%= flash[:alert] %></p>
+        </div>
+      <% end %>
+      <div class="ui segments" align="center">
+        <div class="ui segment">
+          <%= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { id: 'password_form', novalidate: true, class: 'ui form' } do |f|  %>
+            <div class="field">
+              <div class="ui left icon input">
+                <%= f.input_field :email, placeholder: '邮箱' %>
+                <i class="user icon"></i>
+              </div>
+            </div>
+            <%= f.button :submit, value: '重置密码', class: 'ui big fluid blue icon button login_btn'  %>
+          <% end %>
+          <div style="background:#EDEDED;font-size:12px;">
+             <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
