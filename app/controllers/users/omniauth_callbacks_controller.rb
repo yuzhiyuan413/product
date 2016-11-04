@@ -15,8 +15,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     elsif current_user
       authentication = Authentication.create_from_hash(current_user.id, omniauth)
       current_user.update_authentication(omniauth)
-      #set_flash_message(:notice, :add_provider_success)
-      # redirect_to authentications_path
       redirect_to root_path
     else
       omniauth_temp = {}.tap do |x|
@@ -28,7 +26,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         x[:profile_image] = w_profile_image
       end
       session[:omniauth] = omniauth_temp
-      set_flash_message(:notice, :fill_your_email)
+      # set_flash_message(:notice, :fill_your_email)
+      flash.alert = "验证成功！请绑定一个现有的账号，或注册一个用于绑定微博的账号！"
       redirect_to new_user_registration_url
     end
   end
