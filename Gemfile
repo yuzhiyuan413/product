@@ -58,6 +58,7 @@ gem 'doorkeeper'
 
 gem "omniauth-oauth2"
 gem 'omniauth-weibo-oauth2', '~> 0.4.2'
+gem 'omniauth-wechat-oauth2', '~> 0.1.0'
 # gem 'api_grape_routes', '~> 0.1.1'
 # gem 'api_grape_routes', :path => "~/Desktop/api_grape_routes" # your local gem path
 
