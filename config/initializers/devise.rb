@@ -274,6 +274,6 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   # config.omniauth :weibo, SERVICES['weibo']['api_key'], SERVICES['weibo']['api_secret']
-    #token_params: {redirect_uri: "http://homedawn.cx.com/user/auth/weibo/callback" }
+  #   token_params: {redirect_uri: "http://homedawn.cx.com/user/auth/weibo/callback" }
 
 end

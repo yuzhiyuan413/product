@@ -17,7 +17,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       super do |resource|
         omniauth = session[:omniauth]
         if omniauth
-          Authentication.create_from_hash(resource.id, omniauth)
+          authentication = Authentication.where(user_id: resource.id, uid: omniauth["uid"]).first
+          Authentication.create_from_hash(resource.id, omniauth) unless authentication
           resource.update(
             provider: omniauth["provider"], 
             uid: omniauth["uid"],

@@ -11,15 +11,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   protected
   def omniauth_process
     omniauth = request.env['omniauth.auth']
+    p omniauth
     authentication = Authentication.where(provider: omniauth.provider, uid: omniauth.uid.to_s).first
     if authentication
       set_flash_message(:notice, :signed_in)
       sign_in(:user, authentication.user)
       redirect_to root_path
-    # elsif current_user
-    #   authentication = Authentication.create_from_hash(current_user.id, omniauth)
-    #   current_user.update_authentication(omniauth)
-    #   redirect_to root_path
     else
       omniauth_temp = {}.tap do |x|
         w_name = omniauth.except("extra")["info"]["name"]
@@ -31,19 +28,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         x[:profile_image] = w_profile_image
       end
       session[:omniauth] = omniauth_temp
-      # set_flash_message(:notice, :fill_your_email)
       flash.alert = "验证成功！请绑定一个现有的账号，或注册一个用于绑定微博的账号！"
       redirect_to new_user_registration_url
     end
   end
 
-  def after_omniauth_failure_path_for(scope)
-    # new_user_registration_path
-  end
-
-
-
-   # You should also create an action method in this controller like this:
+  # You should also create an action method in this controller like this:
   # def twitter
   # end
 
