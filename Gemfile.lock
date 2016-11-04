@@ -161,6 +161,9 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-wechat-oauth2 (0.1.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-weibo-oauth2 (0.4.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
@@ -282,6 +285,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   omniauth-oauth2
+  omniauth-wechat-oauth2 (~> 0.1.0)
   omniauth-weibo-oauth2 (~> 0.4.2)
   pg
   rack-oauth2 (~> 1.0.5)

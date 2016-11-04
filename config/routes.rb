@@ -19,6 +19,10 @@ Rails.application.routes.draw do
                                     confirmations: "users/confirmations",
                                     omniauth_callbacks: 'users/omniauth_callbacks'}
 
+  # match '/users/auth/:provider/callback' => 'users/omniauth_callbacks#callback', via: [:get, :post]
+  match '/user/auth/wechat' => 'users/omniauth_callbacks#passthru', via: [:get, :post]
+  match '/user/auth/wechat/callback' => 'users/omniauth_callbacks#wechat', via: [:get, :post]
+
   # devise_for :users, controllers: {
   #   omniauth_callbacks: :authentications
   # }

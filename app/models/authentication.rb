@@ -9,9 +9,9 @@ class Authentication < ActiveRecord::Base
   def self.create_from_hash(user_id, omniauth)
     self.create!(
       user_id: user_id,
-      provider: omniauth.provider,
-      uid: omniauth.uid,
-      access_token: omniauth.credentials.token
+      provider: omniauth["provider"],
+      uid: omniauth["uid"],
+      access_token: omniauth["token"]
     )
 
   end

@@ -16,12 +16,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       super do |resource|
         omniauth = session[:omniauth]
-        resource.update(
-          provider: omniauth["provider"], 
-          uid: omniauth["uid"],
-          current_name: omniauth["current_name"],
-          profile_image: omniauth["profile_image"]
-        ) if omniauth
+        if omniauth
+          Authentication.create_from_hash(resource.id, omniauth)
+          resource.update(
+            provider: omniauth["provider"], 
+            uid: omniauth["uid"],
+            current_name: omniauth["current_name"],
+            profile_image: omniauth["profile_image"]
+          ) 
+        end
+        
       end
     end
   end
