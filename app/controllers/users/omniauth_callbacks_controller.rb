@@ -28,8 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         x[:profile_image] = w_profile_image
       end
       session[:omniauth] = omniauth_temp
-      flash.alert = "验证成功！请绑定一个现有的账号，或注册一个用于绑定微博的账号！"
-      redirect_to new_user_registration_url
+      redirect_to bind_users_url
     end
   end
 

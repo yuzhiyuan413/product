@@ -15,3 +15,10 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//
+
+$(function(){
+  $(".login_container .close").click(function(){
+    $(this).parent().hide();
+  })
+})

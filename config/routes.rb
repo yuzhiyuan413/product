@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   root 'products#index'
 
   resources :users do 
+    collection do
+      get :bind
+      post :create_bind
+    end  
     resources :orders
   end
 

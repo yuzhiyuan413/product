@@ -168,7 +168,6 @@ GEM
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
-    pg (0.19.0)
     rack (1.6.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -287,7 +286,6 @@ DEPENDENCIES
   omniauth-oauth2
   omniauth-wechat-oauth2 (~> 0.1.0)
   omniauth-weibo-oauth2 (~> 0.4.2)
-  pg
   rack-oauth2 (~> 1.0.5)
   rails (= 4.2.6)
   sass-rails (~> 5.0)
