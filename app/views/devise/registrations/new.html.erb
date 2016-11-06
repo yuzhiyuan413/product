@@ -2,12 +2,7 @@
   <div class="ui centered stackable grid">
     <div class="six wide column">
       <div class="logo"></div>
-      <% if params[:action] == 'create' && flash[:alert].present? %>
-        <div class="ui negative message">
-          <i class="close icon"></i>
-          <p><%= flash[:alert] %></p>
-        </div>
-      <% end %>
+
       <% if flash[:alert].present? %>
       <div class="ui negative message">
           <i class="close icon"></i>
@@ -42,6 +37,7 @@
           </div>
         </div>
       </div>
+      <%= render "form" %>
     </div>
   </div>
 </div>

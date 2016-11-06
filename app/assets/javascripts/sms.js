@@ -1,8 +1,6 @@
 $("#send_sms").on("click",function(){
   if($("#verify_mobile").val() == ""){
-    // alert("手机号不能为空!");
     appendNotice("手机号不能为空!")
-    // $("#notice_msg").html("手机号不能为空!");
     return;
   }
   $(this).addClass("disabled");
@@ -25,21 +23,15 @@ $("#send_sms").on("click",function(){
         console.info(data);
         result = data['SubmitResult'];
         if(result['code'] == "2"){
-            // alert("短信发送成功！");
-            // $("#notice_msg").html("短信发送成功！");
             appendNotice("短信发送成功!")
-            //#notice show
         }else{
            clearInterval(interval);
            $("#send_sms").val("获取验证码").removeClass("disabled")
-           // alert(result['msg']);
-           // $("#notice_msg").html(result['msg']);
            appendNotice(result['msg'])
-           //#notice show
         }
     },
     error: function(e){
-        alert("出错!")
+        alert("短信服务商出错!请联系短信平台服务商！")
     }
   });
 })

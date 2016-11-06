@@ -1,0 +1,48 @@
+<div class="login_container">
+  <div class="ui centered stackable grid">
+    <div class="six wide column">
+      <div class="logo"></div>
+      <% if flash[:alert].present? %>
+        <div class="ui negative message">
+          <i class="close icon"></i>
+          <p><%= flash[:alert] %></p>
+        </div>
+      <% end %>     
+    <div class="ui segments" align="center">
+      <div class="ui segment">
+        <div class="form-header">
+           <p class="header-title">
+             <%= image_tag "ok.png" %> 验证成功
+           </p>
+           <p class="header-msg">
+             为了给您提供更好的服务，请绑定或注册一个微博账号！
+           </p>
+        </div>
+        <%= simple_form_for :user,url: create_bind_users_path, html: { id: 'registration_form', novalidate: true, class: 'ui form' } do |f|  %>
+          <div class="field">
+            <div class="ui left icon input">
+              <%= f.input_field :email, placeholder: '账号' %>
+              <i class="user icon"></i>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <%= f.input_field :password, placeholder: '密码' %>
+              <i class="lock icon"></i>
+            </div>
+          </div>
+          <div class="field">
+            <div class="form-footer" >
+                <%= link_to "去注册>>", new_registration_path(@user) %>
+            </div>
+            <div style="width:18%;display:inline-block;">
+              <%= f.button :submit, value: '绑定', class: 'ui  fluid blue icon button login_btn'  %>
+            </div>
+          </div> 
+      
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'products#index'
-
+  
   # devise_for :users, controllers: {  }
   devise_for :user, controllers: { sessions: "users/sessions",
                                     registrations: "users/registrations",
@@ -20,9 +20,13 @@ Rails.application.routes.draw do
     post 'users/sms_verify', :to => 'users/invitations#sms_verify'
   end
 
-  # resources :users do 
-  #   resources :orders
-  # end
+  resources :users do 
+    collection do
+      get :bind
+      post :create_bind
+    end  
+    resources :orders
+  end
 
   # match '/users/auth/:provider/callback' => 'users/omniauth_callbacks#callback', via: [:get, :post]
   match '/user/auth/wechat' => 'users/omniauth_callbacks#passthru', via: [:get, :post]

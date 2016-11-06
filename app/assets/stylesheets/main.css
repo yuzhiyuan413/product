@@ -3,6 +3,34 @@ body {
     background-color: #FFFFFF;
     font-size: 12px;
 }
+.form-header{
+    margin-bottom: 40px;
+}
+.header-title {
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+.header-title img{
+    vertical-align: middle;
+    padding-right: 10px;
+}
+.header-msg {
+    text-align: center;
+    color: #111;
+    font-size: 14px;
+    margin-top: 10px
+}
+.form-footer{
+    float:left;
+    width: 81%;
+    text-align:left; 
+    height: 28px;
+    line-height: 28px;
+}
+.form-footer a{
+    color: #111 !important;
+}
 .link_third_login{
     padding-bottom: 10px
 }
@@ -318,8 +346,6 @@ body {
 }
 
 #loginBackground {
-    padding-top: 10%;
-    
     background: url(bg.jpg) no-repeat center center fixed;
 }
 

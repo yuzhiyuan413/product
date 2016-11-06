@@ -22,3 +22,9 @@ function appendNotice(content){
 	  $("#notice").html("").slideUp(1000)
 	})
 }
+
+$(function(){
+  $(".login_container .close").click(function(){
+    $(this).parent().hide();
+  })
+})
