@@ -7,11 +7,8 @@
           <i class="close icon"></i>
           <p><%= flash[:alert] %></p>
         </div>
-      <% end %>
-
-      
+      <% end %>     
     <div class="ui segments" align="center">
-
       <div class="ui segment">
         <div class="form-header">
            <p class="header-title">
@@ -21,7 +18,7 @@
              为了给您提供更好的服务，请绑定或注册一个微博账号！
            </p>
         </div>
-        <%= simple_form_for [@user],url: create_bind_users_path, html: { id: 'registration_form', novalidate: true, class: 'ui form' } do |f|  %>
+        <%= simple_form_for :user,url: create_bind_users_path, html: { id: 'registration_form', novalidate: true, class: 'ui form' } do |f|  %>
           <div class="field">
             <div class="ui left icon input">
               <%= f.input_field :email, placeholder: '账号' %>

@@ -10,26 +10,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     # super
+    p '*' * 100
+    p sign_up_params
     user = User.find_by(email: sign_up_params[:email])
     if user
       flash.alert = "用户已经存在!"
+      render action: 'new' and return 
     else
-      super do |resource|
-        omniauth = session[:omniauth]
-        if omniauth
-          authentication = Authentication.where(user_id: resource.id, uid: omniauth["uid"]).first
-          Authentication.create_from_hash(resource.id, omniauth) unless authentication
-          resource.update(
-            provider: omniauth["provider"], 
-            uid: omniauth["uid"],
-            current_name: omniauth["current_name"],
-            profile_image: omniauth["profile_image"]
-          ) 
-        end
-        
-      end
+      User.create(sign_up_params)
+      
     end
+    redirect_to root_path
   end
+  private
 
   # GET /resource/edit
   # def edit
