@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
 
+
   devise :database_authenticatable, :registerable,
          :recoverable,:rememberable,:validatable,
          :omniauthable, :omniauth_providers => [:weibo]
   has_many :orders       
-  #scope :by_status, -> status { where(status: status) }
-  #User.by_status '1'
+  scope :by_mobile, -> mobile_num { where(mobile: mobile_num) }
 
   def update_authentication omniauth
     provider = omniauth.provider

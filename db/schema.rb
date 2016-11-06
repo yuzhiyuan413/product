@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102061503) do
+ActiveRecord::Schema.define(version: 20161105094651) do
 
   create_table "authentications", force: :cascade do |t|
     t.string   "provider",     limit: 255
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20161102061503) do
     t.string   "uid",                    limit: 255
     t.string   "current_name",           limit: 255
     t.string   "profile_image",          limit: 255
+    t.string   "mobile",                 limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

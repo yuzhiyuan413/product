@@ -15,3 +15,10 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+function appendNotice(content){
+	$("#notice").html("<i class=\"close icon\"></i><p id=\"notice_msg\">"+content+"</p>");
+	$(".close").on("click",function(){
+	  $("#notice").html("").slideUp(1000)
+	})
+}

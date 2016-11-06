@@ -31,6 +31,53 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def send_sms
+    verify_number = ((rand * 9 + 1) * 1000).to_i
+    mobile = params[:verify][:mobile]
+    p "--------------------------手机号码：#{mobile}验证码：#{verify_number}-----------------------------"
+      
+    if User.by_mobile(mobile).size > 0
+      # flash.alert = "该用户已经存在!"
+      respond_to do |format|
+        format.json { render json: {SubmitResult: {code: '0', msg: '用户已经存在！'}} }
+      end
+    else
+      session[:verify] = {mobile: mobile, verify_number: verify_number}
+      sms_params = {}.tap do |x|
+        x["account"] = sms_conf['sms_account']['account']
+        x["password"] = sms_conf['sms_account']['password']
+        x["mobile"] = mobile
+        x["content"] = "您的验证码是：#{verify_number}。请不要把验证码泄露给其他人。"
+      end
+      uri = URI.parse("http://106.veesing.com/webservice/sms.php?method=Submit")
+      res = Net::HTTP.post_form(uri, sms_params)
+      result = Hash.from_xml(res.body)
+      respond_to do |format|
+        format.json { render json: result }
+      end
+    end
+  
+  end
+
+  def sms_verify
+    params_verify = {
+      mobile: params[:verify][:mobile],
+      verify_number: params[:verify][:sms_verify_number]
+    }
+    p params_verify
+    verify_temp = session[:verify]
+    p verify_temp == params_verify
+    if verify_temp == params_verify
+
+    end
+
+  end
+
+  private
+    def sms_conf
+      YAML.load_file(Rails.root.join("config", "sms_config.yml"))
+    end
+
   # GET /resource/edit
   # def edit
   #   super
