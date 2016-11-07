@@ -5,12 +5,9 @@
   <div class="ui centered stackable grid">
     <div class="six wide column">
       <div class="logo"></div>
-       
-      
-      
       <div class="ui segments" align="center">
         <div class="ui segment">
-          <%= simple_form_for 'verify', as: 'verify', url: '/users/new_password', html: { id: 'registration_form', novalidate: true, class: 'ui form' } do |f|  %>
+          <%= simple_form_for 'verify', as: 'verify', url: users_sms_verify_path, html: { id: 'registration_form', novalidate: true, class: 'ui form' } do |f|  %>
             <div class="field">
               <div class="ui left icon input">
                 <%= f.input_field :mobile,autofocus: true, placeholder: '手机号码' %>

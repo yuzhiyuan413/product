@@ -37,6 +37,15 @@ $("#send_sms").on("click",function(){
 })
 
 $("#sms_verify").on("click",function(){
+  if($("#verify_mobile").val() == ""){
+    appendNotice("手机号不能为空!")
+    return;
+  }
+  if($("#verify_sms_verify_number").val() == ""){
+    appendNotice("验证码不能为空!")
+    return;
+  }
   params = $("#registration_form").serialize();
+  $("#registration_form").submit();
 
 })

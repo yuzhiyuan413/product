@@ -10,10 +10,10 @@
 		<%=render 'shared/header'%>
 		<div style="margin:30px 50px">
 		<div class="ui negative message" style="display:none;" id="notice">
-          <i class="close icon"></i>
-          <p id="notice_msg"><%= flash[:alert] %></p>
-      	</div>
-			<%= yield %>
+      <i class="close icon"></i>
+      <p id="notice_msg"><%= flash[:alert] %></p>
+  	</div>
+		<%= yield %>
 		</div>
 	</body>
 </html>

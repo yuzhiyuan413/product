@@ -43,14 +43,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     verify_number = ((rand * 9 + 1) * 1000).to_i
     mobile = params[:verify][:mobile]
     p "--------------------------手机号码：#{mobile}验证码：#{verify_number}-----------------------------"
-      
-    if User.by_mobile(mobile).size > 0
-      # flash.alert = "该用户已经存在!"
-      respond_to do |format|
-        format.json { render json: {SubmitResult: {code: '0', msg: '用户已经存在！'}} }
-      end
-    else
-      session[:verify] = {mobile: mobile, verify_number: verify_number}
+    # if User.by_mobile(mobile).size > 0
+    #   # flash.alert = "该用户已经存在!"
+    #   respond_to do |format|
+    #     format.json { render json: {SubmitResult: {code: '0', msg: '用户已经存在！'}} }
+    #   end
+    # else
+      session[:verify] = {"mobile" => mobile, "verify_number" => verify_number}
       sms_params = {}.tap do |x|
         x["account"] = sms_conf['sms_account']['account']
         x["password"] = sms_conf['sms_account']['password']
@@ -63,20 +62,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_to do |format|
         format.json { render json: result }
       end
-    end
+    # end
   
   end
 
   def sms_verify
+    mobile = params[:verify][:mobile]
+    verify_num = params[:verify][:sms_verify_number]
     params_verify = {
-      mobile: params[:verify][:mobile],
-      verify_number: params[:verify][:sms_verify_number]
+      "mobile" => mobile,
+      "verify_number" => verify_num.to_i
     }
-    p params_verify
     verify_temp = session[:verify]
-    p verify_temp == params_verify
+    p "------------params_verify:#{params_verify}--------verify_temp:#{verify_temp.to_hash}"
     if verify_temp == params_verify
-
+      #mobile  where
+      user = User.by_mobile(mobile)
+      if user.size == 0
+        user = User.new do |u|
+          u.email = "#{mobile}@126.com"
+          u.password = "123456"
+          u.mobile = mobile
+        end
+        user.save
+      end
+      sign_in(:user, user)
+      redirect_to root_path
+    else
+      redirect_to users_new_by_mobile_url, alert: '验证码输入错误!'
     end
 
   end

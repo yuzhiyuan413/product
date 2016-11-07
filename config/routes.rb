@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/new_by_mobile', :to => 'users/registrations#new_by_mobile'
     post 'users/send_sms', :to => 'users/registrations#send_sms'
-    post 'users/sms_verify', :to => 'users/invitations#sms_verify'
+    post 'users/sms_verify', :to => 'users/registrations#sms_verify'
     get 'users/bind', :to => 'users/registrations#bind'
     post 'users/create_bind', :to => 'users/registrations#create_bind'
   end
