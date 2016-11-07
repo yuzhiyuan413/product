@@ -13,18 +13,16 @@ Rails.application.routes.draw do
                                     registrations: "users/registrations",
                                     invitations: "users/invitations",
                                     confirmations: "users/confirmations",
-                                    omniauth_callbacks: 'users/omniauth_callbacks'}
+                                    omniauth_callbacks: 'users/omniauth_callbacks'} 
   devise_scope :user do
     get 'users/new_by_mobile', :to => 'users/registrations#new_by_mobile'
     post 'users/send_sms', :to => 'users/registrations#send_sms'
     post 'users/sms_verify', :to => 'users/invitations#sms_verify'
+    get 'users/bind', :to => 'users/registrations#bind'
+    post 'users/create_bind', :to => 'users/registrations#create_bind'
   end
 
   resources :users do 
-    collection do
-      get :bind
-      post :create_bind
-    end  
     resources :orders
   end
 

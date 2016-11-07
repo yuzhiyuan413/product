@@ -7,6 +7,35 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def bind
+    
+  end
+
+  def create_bind
+    omniauth = session[:omniauth]
+    p params
+    p '*' * 100
+    @current_user = User.find_by_email(params[:user][:email])
+    if @current_user.present?
+      if omniauth
+        authentication = Authentication.where(user_id: @current_user.id, uid: omniauth["uid"]).first
+        Authentication.create_from_hash(@current_user.id, omniauth) unless authentication
+        @current_user.update(
+          provider: omniauth["provider"], 
+          uid: omniauth["uid"],
+          current_name: omniauth["current_name"],
+          profile_image: omniauth["profile_image"]
+        ) 
+        redirect_to root_path
+      end
+    else
+      flash.alert = "用户不存在，请先去注册。"
+      render action: 'bind'
+    end
+    
+    
+  end
+
   # POST /resource
   def create
     # super
@@ -17,10 +46,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.alert = "用户已经存在!"
       render action: 'new' and return 
     else
-      User.create(sign_up_params)
-      
+      super do |resource|
+        omniauth = session[:omniauth]
+        if omniauth
+          authentication = Authentication.where(user_id: resource.id, uid: omniauth["uid"]).first
+          Authentication.create_from_hash(resource.id, omniauth) unless authentication
+          resource.update(
+            provider: omniauth["provider"],
+            uid: omniauth["uid"],
+            current_name: omniauth["current_name"],
+            profile_image: omniauth["profile_image"]
+          )
+        end
+      end
     end
-    redirect_to root_path
+     
   end
 
   def send_sms

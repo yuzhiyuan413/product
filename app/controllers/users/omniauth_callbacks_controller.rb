@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         x[:profile_image] = w_profile_image
       end
       session[:omniauth] = omniauth_temp
-      redirect_to bind_users_url
+      redirect_to users_bind_url
     end
   end
 
