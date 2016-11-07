@@ -81,6 +81,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if user.size == 0
         user = User.new do |u|
           u.email = "#{mobile}@126.com"
+          u.current_name = mobile
           u.password = "123456"
           u.mobile = mobile
         end
