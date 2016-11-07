@@ -12,22 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_bind
-    omniauth = session[:omniauth]
-    p params
-    p '*' * 100
     @current_user = User.find_by_email(params[:user][:email])
     if @current_user.present?
-      if omniauth
-        authentication = Authentication.where(user_id: @current_user.id, uid: omniauth["uid"]).first
-        Authentication.create_from_hash(@current_user.id, omniauth) unless authentication
-        @current_user.update(
-          provider: omniauth["provider"], 
-          uid: omniauth["uid"],
-          current_name: omniauth["current_name"],
-          profile_image: omniauth["profile_image"]
-        ) 
-        redirect_to root_path
-      end
+      set_user_omniauth(@current_user)
+      sign_in(:user, @current_user)
+      redirect_to root_path
     else
       flash.alert = "用户不存在，请先去注册。"
       render action: 'bind'
@@ -38,26 +27,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # super
-    p '*' * 100
-    p sign_up_params
     user = User.find_by(email: sign_up_params[:email])
     if user
       flash.alert = "用户已经存在!"
       render action: 'new' and return 
     else
       super do |resource|
-        omniauth = session[:omniauth]
-        if omniauth
-          authentication = Authentication.where(user_id: resource.id, uid: omniauth["uid"]).first
-          Authentication.create_from_hash(resource.id, omniauth) unless authentication
-          resource.update(
-            provider: omniauth["provider"],
-            uid: omniauth["uid"],
-            current_name: omniauth["current_name"],
-            profile_image: omniauth["profile_image"]
-          )
-        end
+        set_user_omniauth(resource)
       end
     end
      
@@ -110,6 +86,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
       YAML.load_file(Rails.root.join("config", "sms_config.yml"))
     end
 
+    def set_user_omniauth resource
+      omniauth = session[:omniauth]
+      if omniauth
+        authentication = Authentication.where(user_id: resource.id, uid: omniauth["uid"]).first
+        Authentication.create_from_hash(resource.id, omniauth) unless authentication
+        resource.update(
+          provider: omniauth["provider"],
+          uid: omniauth["uid"],
+          current_name: omniauth["current_name"],
+          profile_image: omniauth["profile_image"]
+        )
+      end
+    end
   # GET /resource/edit
   # def edit
   #   super
