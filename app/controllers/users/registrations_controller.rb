@@ -88,7 +88,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         end
         user.save
       end
-      sign_in(:user, user)
+      sign_in(:user, user.first)
       redirect_to root_path
     else
       redirect_to users_new_by_mobile_url, alert: '验证码输入错误!'
