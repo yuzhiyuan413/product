@@ -24,6 +24,10 @@ $("#send_sms").on("click",function(){
         result = data['SubmitResult'];
         if(result['code'] == "2"){
             appendNotice("短信发送成功!")
+        }else if(result['code'] == '4086'){
+            appendNotice("提交失败，同一个手机号码发送频率太频繁!请稍后再试！")
+        }else if(result['code'] == '4085'){
+            appendNotice("同一手机号码验证码短信发送量超出5条!")
         }else{
            clearInterval(interval);
            $("#send_sms").val("获取验证码").removeClass("disabled")

@@ -54,7 +54,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         x["account"] = sms_conf['sms_account']['account']
         x["password"] = sms_conf['sms_account']['password']
         x["mobile"] = mobile
-        x["content"] = "您的验证码是：#{verify_number}。请不要把验证码泄露给其他人。"
+        # x["content"] = "您的验证码是：#{verify_number}。请不要把验证码泄露给其他人。"
+        x["content"] = "您的校验码是：#{verify_number}。请不要把校验码泄露给其他人。"
       end
       uri = URI.parse("http://106.veesing.com/webservice/sms.php?method=Submit")
       res = Net::HTTP.post_form(uri, sms_params)
