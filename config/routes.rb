@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shops
   use_doorkeeper
   resources :products
   mount ApplicationAPI, at: 'api'
