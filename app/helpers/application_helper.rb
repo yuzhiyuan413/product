@@ -3,7 +3,7 @@ module ApplicationHelper
     %W{
     	users/sessions 
     	users/registrations 
-    	devise/passwords
+    	users/passwords
     }.include?(params[:controller]) || ["bind","create_bind"].include?(params[:action]) ? 
     "loginBackground" : "skin-blue layout-top-nav"
 	end

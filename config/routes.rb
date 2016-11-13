@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   
   # devise_for :users, controllers: {  }
   devise_for :user, controllers: { sessions: "users/sessions",
-                                    registrations: "users/registrations",
-                                    invitations: "users/invitations",
-                                    confirmations: "users/confirmations",
-                                    omniauth_callbacks: 'users/omniauth_callbacks'} 
+                                   registrations: "users/registrations",
+                                   invitations: "users/invitations",
+                                   confirmations: "users/confirmations",
+                                   omniauth_callbacks: 'users/omniauth_callbacks',
+                                   passwords: "users/passwords"
+                                  } 
   devise_scope :user do
     get 'users/new_by_mobile', :to => 'users/registrations#new_by_mobile'
     post 'users/send_sms', :to => 'users/registrations#send_sms'

@@ -3,12 +3,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super do
+      render layout: "login" and return
+    end
+  end
 
   def bind
     
+  end
+
+  def new_by_mobile
+    render layout: "login" and return
   end
 
   def create_bind
@@ -79,6 +85,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if verify_temp == params_verify
       #mobile  where
       user = User.by_mobile(mobile)
+      debugger
       if user.size == 0
         user = User.new do |u|
           u.email = "#{mobile}@126.com"
@@ -88,7 +95,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         end
         user.save
       end
-      sign_in(:user, user.first)
+      debugger
+      sign_in(:user, user)
       redirect_to root_path
     else
       redirect_to users_new_by_mobile_url, alert: '验证码输入错误!'

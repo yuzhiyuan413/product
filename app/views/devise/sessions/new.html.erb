@@ -35,7 +35,7 @@
             <div style="height:30px;">
               <div style="float:left;">
                 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                 <%= link_to "忘记密码", new_password_path(resource_name) %> 
+                 <%= link_to "忘记密码", new_user_password_path %> 
                 <% end -%>
               </div>
               <div style="float:right;">
