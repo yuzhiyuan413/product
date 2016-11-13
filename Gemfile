@@ -19,6 +19,14 @@ gem 'mysql2'
 gem 'devise'
 gem 'whenever'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
+
+gem 'redis-rails'
+gem 'activerecord-session_store'
+gem 'jquery-ui-rails', '~>4.2.1'
+gem 'bootstrap-sass', '~> 3.3.5.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.37'
+gem 'select2-rails', '~> 4.0', '>= 4.0.1'
+
 #bootstrap
 gem 'therubyracer'
 # gem 'less-rails', '~> 2.7.1'

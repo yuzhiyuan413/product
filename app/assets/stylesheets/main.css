@@ -346,7 +346,9 @@ body {
 }
 
 #loginBackground {
-    background: url(bg.jpg) no-repeat center center fixed;
+    /*background: url(bg.jpg) no-repeat center center fixed;*/
+    /*background: url(tjbg1.jpg) no-repeat center center fixed;*/
+    background: url(tjbg.jpg) no-repeat center center fixed;
 }
 
 .hvr-buzz-out {
@@ -793,7 +795,8 @@ body {
 }
 
 .login_container .login_btn {
-    background-color: #4ccb18 !important;
+    /*background-color: #4ccb18 !important;*/
+    background-color: #4682B4 !important;   
 }
 
 @media only screen and (min-width: 1200px) {
