@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105094651) do
+ActiveRecord::Schema.define(version: 20161111063158) do
 
   create_table "authentications", force: :cascade do |t|
     t.string   "provider",     limit: 255
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161105094651) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "shop_id",    limit: 4
   end
 
   create_table "products", force: :cascade do |t|
@@ -81,6 +82,14 @@ ActiveRecord::Schema.define(version: 20161105094651) do
     t.datetime "updated_at",             null: false
     t.integer  "order_id",   limit: 4
     t.integer  "user_id",    limit: 4
+    t.integer  "shop_id",    limit: 4
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -109,6 +118,7 @@ ActiveRecord::Schema.define(version: 20161105094651) do
     t.string   "current_name",           limit: 255
     t.string   "profile_image",          limit: 255
     t.string   "mobile",                 limit: 255
+    t.integer  "role_id",                limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
