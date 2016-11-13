@@ -7,14 +7,29 @@
 	  <%= csrf_meta_tags %>
 	</head>
 	<body id="<%= include_body_css %>">
-		<%=render 'shared/header'%>
-		<div style="margin:30px 50px">
-		<div class="ui negative message" style="display:none;" id="notice">
-      <i class="close icon"></i>
-      <p id="notice_msg"><%= flash[:alert] %></p>
-  	</div>
-		<%= yield %>
-		</div>
+		<!-- Site wrapper -->
+    <div class="wrapper">
+      <!-- The top header -->
+      <%=render 'shared/main_header'%>
+      <!-- Left side column. contains the sidebar -->
+      <%=render 'shared/main_sidebar' %>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+        </section>
+        <!-- Main content -->
+        <section class="content">
+          <%= yield %>
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <!-- The bottom footer -->
+      <%=render 'shared/main_footer'%>
+      <!-- The right style sidebar -->
+    
+    </div><!-- ./wrapper -->
+
+<%= javascript_include_tag 'adminlte', 'data-turbolinks-track' => true %>
 	</body>
-	<%= javascript_include_tag 'adminlte', 'data-turbolinks-track' => true %>
+	
 </html>

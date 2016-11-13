@@ -26,6 +26,8 @@ gem 'jquery-ui-rails', '~>4.2.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.37'
 gem 'select2-rails', '~> 4.0', '>= 4.0.1'
+gem 'font-awesome-rails', '~> 4.3.0.0'
+
 
 #bootstrap
 gem 'therubyracer'

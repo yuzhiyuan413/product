@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>曦鱼商城</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="<%= include_body_css %>">
+<div style="margin:30px 50px">
+	<div class="ui negative message" style="display:none;" id="notice">
+		<i class="close icon"></i>
+		<p id="notice_msg"><%= flash[:alert] %></p>
+	</div>
+	<%= yield %>
+</div>
+</body>
+</html>

@@ -5,6 +5,6 @@ module ApplicationHelper
     	users/registrations 
     	devise/passwords
     }.include?(params[:controller]) || ["bind","create_bind"].include?(params[:action]) ? 
-    "loginBackground" : ""
+    "loginBackground" : "skin-blue layout-top-nav"
 	end
 end

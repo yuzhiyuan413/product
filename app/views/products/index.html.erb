@@ -1,3 +1,6 @@
+<%= render layout: 'shared/default_box', locals: { box_title: "商品列表"} do |box| %>
+ <div class="col-md-12">
+ <% case box when Box::Body %>
 <%- model_class = Product -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -44,4 +47,6 @@
 <%= link_to '创建订单',
             new_user_order_path(current_user),
             :class => 'btn btn-primary' %>
-
+            <% end %>
+            </div>
+<% end %>
