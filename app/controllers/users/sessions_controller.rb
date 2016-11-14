@@ -1,12 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
-
+  layout "login", :only => [:new]
   # GET /resource/sign_in
-  def new
-    super do
-      render layout: "login" and return
-    end
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   # def create

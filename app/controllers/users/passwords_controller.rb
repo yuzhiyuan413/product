@@ -1,8 +1,9 @@
 class Users::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
-  def new
-    super
-  end
+  layout "login", :only => [:new]
+  # def new
+  #   super
+  # end
 
   # POST /resource/password
   # def create
