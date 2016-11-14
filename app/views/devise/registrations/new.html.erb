@@ -1,3 +1,6 @@
+
+
+
 <div class="login_container">
   <div class="ui centered stackable grid">
     <div class="six wide column">
@@ -9,9 +12,15 @@
           <p><%= flash[:alert] %></p>
       </div>
       <% end %>
-      <%= render "form" %>
+      <div class="ui segments" align="center">
+        <div class="ui segment">
+         <%= render "form" %>
+          <div style="background:#EDEDED;font-size:12px;">
+             <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
 
