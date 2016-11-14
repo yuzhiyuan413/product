@@ -1,5 +1,7 @@
+//= require fastclick.min
 //= require app.min
 //= require demo
+
 
 $(function () {
     $('.dropdown-toggle').dropdown();

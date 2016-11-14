@@ -5,6 +5,6 @@ module ApplicationHelper
     	users/registrations 
     	users/passwords
     }.include?(params[:controller]) || ["bind","create_bind"].include?(params[:action]) ? 
-    "loginBackground" : "skin-blue layout-top-nav"
+    "loginBackground" : "hold-transition skin-blue sidebar-mini"
 	end
 end
