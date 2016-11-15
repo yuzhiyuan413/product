@@ -3,9 +3,9 @@
     <!-- Logo -->
     <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>Xi</b>Yu</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>XiYuMall@</b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -82,7 +82,7 @@
                     <a href="#">
                       <div class="pull-left">
                         <!-- <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image"> -->
-                        <%= image_tag current_user.profile_image, class: 'img-circle' if current_user %>
+                        <%= image_tag current_user.head_img, class: 'img-circle' if current_user %>
                       </div>
                       <h4>
                         Reviewers
@@ -216,14 +216,14 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- <img src="" class="user-image" alt="User Image"> -->
-              <%= image_tag current_user.profile_image,class: 'user-image' if current_user %>
+              <%= image_tag current_user.head_img,class: 'user-image' if current_user %>
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <!-- <img src="" class="img-circle" alt="User Image"> -->
-                <%= image_tag(current_user.profile_image) if current_user %>
+                <%= image_tag(current_user.head_img) if current_user %>
                 <p>
                  <%= current_user.show_name if current_user%>
                   <small>Member since Nov. 2012</small>

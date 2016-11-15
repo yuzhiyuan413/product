@@ -25,7 +25,11 @@ class User < ActiveRecord::Base
   end
 
   def show_name
-      self.current_name.blank? ? self.email : self.current_name
+    self.current_name.blank? ? self.email : self.current_name
+  end
+
+  def head_img
+    self.profile_image.blank? ? 'touxiang.jpeg' : self.profile_image
   end
 
 
