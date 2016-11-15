@@ -1,5 +1,5 @@
-<h1>New Shop</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', shops_path %>
+<%= render layout: 'shared/default_box', locals: { box_title: "添加店铺(实际不允许)"} do |box| %>
+	<% case box when Box::Body %>
+<%= render :partial => 'form' %>
+ <% end %>
+<% end %>

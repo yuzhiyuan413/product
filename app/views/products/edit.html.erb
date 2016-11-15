@@ -1,7 +1,5 @@
 <%= render layout: 'shared/default_box', locals: { box_title: "编辑商品"} do |box| %>
 	<% case box when Box::Body %>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
 </div>
 <%= render :partial => 'form' %>
 	<% end %>

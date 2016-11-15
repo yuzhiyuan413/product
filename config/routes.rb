@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders
+  resources :shops
 
   # match '/users/auth/:provider/callback' => 'users/omniauth_callbacks#callback', via: [:get, :post]
   match '/user/auth/wechat' => 'users/omniauth_callbacks#passthru', via: [:get, :post]

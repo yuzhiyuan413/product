@@ -1,6 +1,6 @@
-<h1>Editing Shop</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @shop %> |
-<%= link_to 'Back', shops_path %>
+<%= render layout: 'shared/default_box', locals: { box_title: "编辑商铺"} do |box| %>
+	<% case box when Box::Body %>
+</div>
+<%= render :partial => 'form' %>
+	<% end %>
+<% end %>

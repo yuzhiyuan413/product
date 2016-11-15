@@ -1,22 +1,41 @@
-<%= render layout: 'shared/default_box', locals: { box_title: "商品列表"} do |box| %>
-<table>
+<%= render layout: 'shared/default_box', locals: { box_title: "店铺列表"} do |box| %>
+ <div class="col-md-12">
+ <% case box when Box::Body %>
+<%- model_class = Shop -%>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>名称</th>
+      <th>状态</th>
+      <th>店主</th>
+      <th>创建时间</th>
+      <th>操作</th>
     </tr>
   </thead>
 
   <tbody>
     <% @shops.each do |shop| %>
       <tr>
-        <td><%= link_to 'Show', shop %></td>
-        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to shop.name, shop_path(shop) %></td>
+        <td><%= shop.status %></td>
+        <td><%= shop.user_id %></td>
+        <td><%= shop.created_at %></td>
+        <td>
+          <%= link_to '编辑', edit_shop_path(shop), :class => 'btn btn-default btn-xs' %>
+          <%= link_to '删除',
+                      shop_path(shop),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Shop', new_shop_path %>
+<%= link_to '创建店铺',
+            new_shop_path,
+            :class => 'btn btn-primary' %>
+<% end %>
+</div>
+<% end %>

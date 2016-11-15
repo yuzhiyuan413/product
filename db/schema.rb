@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111063158) do
+ActiveRecord::Schema.define(version: 20161115063230) do
 
   create_table "authentications", force: :cascade do |t|
     t.string   "provider",     limit: 255
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20161111063158) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "status",     limit: 4
   end
 
   create_table "students", force: :cascade do |t|
