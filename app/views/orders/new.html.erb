@@ -1,3 +1,5 @@
-<p>创建订单-用户ID"<%=current_user.id%>"</p>
-
+<%= render layout: 'shared/default_box', locals: { box_title: "添加订单(实际不允许)"} do |box| %>
+	<% case box when Box::Body %>
 <%= render :partial => 'form' %>
+ <% end %>
+<% end %>

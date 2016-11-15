@@ -1,0 +1,6 @@
+<%= render layout: 'shared/default_box', locals: { box_title: "编辑订单"} do |box| %>
+	<% case box when Box::Body %>
+</div>
+<%= render :partial => 'form' %>
+	<% end %>
+<% end %>

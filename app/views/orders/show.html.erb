@@ -1,0 +1,24 @@
+<%= render layout: 'shared/default_box', locals: { box_title: "订单查看"} do |box| %>
+<% case box when Box::Body %>
+<dl class="dl-horizontal">
+  <dt><strong>名称:</strong></dt>
+  <dd><%= @order.name %></dd>
+  <dt><strong>状态:</strong></dt>
+  <dd><%= @order.status %></dd>
+  <dt><strong>归属用户:</strong></dt>
+  <dd><%= @order.user_id %></dd>
+  <dt><strong>归属店铺:</strong></dt>
+  <dd><%= @order.shop_id %></dd>
+</dl>
+
+<%= link_to '返回',
+              orders_path, :class => 'btn btn-default'  %>
+<%= link_to '编辑',
+              edit_order_path(@order), :class => 'btn btn-default' %>
+<%= link_to '删除',
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+              <% end %>
+<% end %>
