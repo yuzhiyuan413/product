@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :attachments
+  resources :comments
   resources :shops
   use_doorkeeper
   resources :products
