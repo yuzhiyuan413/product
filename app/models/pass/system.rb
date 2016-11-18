@@ -1,5 +1,5 @@
 # encoding: utf-8
-class System
+class Pass::System
 
 	def self.subsystems
     @subsystems ||= []
@@ -17,6 +17,6 @@ class System
 		raise ArgumentError, "已存在相同subsystem:#{name}" if subsystems.any? { |s| s.name == name}
 		s = Pass::Subsystem.new
 		s.name = name
-		instancn_eval(s)
+		instance_eval(s)
 	end
 end

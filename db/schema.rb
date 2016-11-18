@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115063230) do
+ActiveRecord::Schema.define(version: 20161116030258) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "file_name",     limit: 255
+    t.string   "file_name_uid", limit: 255
+    t.integer  "filesize",      limit: 4
+    t.integer  "version",       limit: 4
+    t.integer  "product_id",    limit: 4
+    t.integer  "comment_id",    limit: 4
+    t.integer  "shop_id",       limit: 4
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "authentications", force: :cascade do |t|
     t.string   "provider",     limit: 255
@@ -20,6 +33,15 @@ ActiveRecord::Schema.define(version: 20161115063230) do
     t.string   "user_id",      limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content",    limit: 255
+    t.integer  "product_id", limit: 4
+    t.integer  "shop_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
