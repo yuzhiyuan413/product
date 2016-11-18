@@ -1,0 +1,12 @@
+base: &BASE
+  version: 1.0.0
+
+development:
+  <<: *BASE
+  redis_location: "redis://127.0.0.1:6379/1/Product"
+  expires_in: 5400
+
+production:
+  <<: *BASE
+  redis_location: "redis://xxx.xxx.xxx.xxx:6379/1/Product"
+  expires_in: 172800
