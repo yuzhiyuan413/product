@@ -13,10 +13,11 @@ class Pass::System
     @controllers ||= []
   end
 
-	def self.define_subsystem name 
+	def self.define_subsystem name, &block
 		raise ArgumentError, "已存在相同subsystem:#{name}" if subsystems.any? { |s| s.name == name}
 		s = Pass::Subsystem.new
 		s.name = name
-		instance_eval(s)
+    self.subsystems << s
+		s.instance_eval(&block) if block_given?
 	end
 end
