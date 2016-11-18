@@ -28,6 +28,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.37'
 gem 'select2-rails', '~> 4.0', '>= 4.0.1'
 gem 'font-awesome-rails', '~> 4.3.0.0'
 
+gem 'actionpack-action_caching'
+
 
 #bootstrap
 gem 'therubyracer'

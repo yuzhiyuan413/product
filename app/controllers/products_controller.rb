@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  after_action :clear_caches, only: [:create, :update, :destroy]
+  caches_action :index, cache_path: Proc.new { {cache_id: current_user.id } }
   # GET /products
   # GET /products.json
   def index
-    # @products = search
-    @products = Product.all
+    # product = Product.new
+    # @products = product.search
+    @products =  Product.all
   end
 
   # GET /products/1
@@ -24,7 +26,7 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
-  def create
+  def create 
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -71,5 +73,10 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :sprice, :desc)
+    end
+
+    def clear_caches
+      p "-------------------clear #{current_user.show_name}'s cache----------------------- "
+      expire_action(controller: 'products', action: 'index', cache_id: current_user.id)
     end
 end
