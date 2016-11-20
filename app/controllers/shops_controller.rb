@@ -1,5 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  after_action :clear_caches, only: [:create, :update, :destroy]
+  caches_action :index, cache_path: Proc.new { {cache_id: current_user.id } }
 
   # GET /shops
   # GET /shops.json
@@ -70,5 +72,10 @@ class ShopsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
        params.require(:shop).permit(:name, :status, :user_id)
+    end
+
+    def clear_caches
+      p "-------------------clear #{current_user.show_name}'s cache----------------------- "
+      expire_action(controller: 'shops', action: 'index', cache_id: current_user.id)
     end
 end
