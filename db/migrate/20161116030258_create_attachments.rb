@@ -3,7 +3,8 @@ class CreateAttachments < ActiveRecord::Migration
     create_table :attachments do |t|
     	t.string :file_name
       t.string :file_name_uid
-      t.integer :filesize
+      t.integer :file_size
+      t.string :file_type
       t.integer :version
       t.integer :product_id
       t.integer :comment_id
