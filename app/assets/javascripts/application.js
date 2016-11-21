@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require fakeloader.min
+//= require fileinput
 
 function appendNotice(content){
 	$("#notice").html("<i class=\"close icon\"></i><p id=\"notice_msg\">"+content+"</p>");

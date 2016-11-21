@@ -1,0 +1,32 @@
+<div id="fileinput_bs" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog-fileinput-bs">
+    <div class="modal-content">
+      <div class="modal-header color-black-5">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title color-white-2" id="gridModalLabel">商品图片列表</h4>
+      </div>
+      <form enctype="multipart/form-data">
+        <div class="form-group">
+          <input id="file-5" class="file" type="file" name="attachment[file_name_uid]" multiple data-preview-file-type="any" data-upload-url="/attachments?product_id=<%= @product.id %>&user_id=<%= current_user.id %>&filetype=attachment&uploadtype=bst">
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    //暂不调试
+    // $(document).ready(function () {
+    //   $(".form-group").children("div:first-child").attr("class", "file-input-ajax-new");
+
+    //   $('#file-5').on('fileuploaded', function (event, data, previewId, index) {
+    //     var form = data.form, files = data.files, extra = data.extra,
+    //         response = data.response, reader = data.reader;
+    //     progress = $('.kv-upload-progress .progress-bar').attr('aria-valuenow')
+    //     if (progress == "100") {
+    //       appendNotice("上传成功!");
+    //       window.location.reload();
+    //     }
+    //   });
+    });
+  </script>
+</div>

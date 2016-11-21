@@ -18,5 +18,29 @@
  *= require main
  *= require semantic
  *= require fakeloader
+ *= require fileinput
  *= require_self
  */
+/*
+.new-task-file-bottom{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.new-task-file-img-padding-5{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.new-task-reply-box{
+    padding: 25px 0px 15px;
+}
+.new-task-reply-box-title{
+    width: 100%;
+    float: left;
+}
+.new-task-reply-box-title h4{
+    color: #9bc965;
+    width: 80%;
+    float: left;
+}*/
