@@ -69,6 +69,6 @@ class AttachmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attachment_params
-      params.fetch(:attachment, {})
+      params.require(:product).permit(:file_name,:file_name_uid, :file_size,:file_type, :version, :product_id, :comment_id, :shop_id, :user_id)
     end
 end
