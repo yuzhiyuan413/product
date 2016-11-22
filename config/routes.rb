@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :shops
   use_doorkeeper
   resources :products
+  resources :orders
+  resources :shops
   mount ApplicationAPI, at: 'api'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -31,8 +33,7 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  resources :orders
-  resources :shops
+  
 
   # match '/users/auth/:provider/callback' => 'users/omniauth_callbacks#callback', via: [:get, :post]
   match '/user/auth/wechat' => 'users/omniauth_callbacks#passthru', via: [:get, :post]

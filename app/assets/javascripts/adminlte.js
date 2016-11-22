@@ -1,6 +1,7 @@
 //= require fastclick.min
 //= require app.min
 //= require demo
+//= require fileinput
 
 
 $(function () {

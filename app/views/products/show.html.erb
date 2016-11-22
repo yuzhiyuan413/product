@@ -1,5 +1,6 @@
 <%= render layout: 'shared/default_box', locals: { box_title: "商品查看"} do |box| %>
 <% case box when Box::Body %>
+<%= render "pop_file_input" %>
 <dl class="dl-horizontal">
   <dt><strong>名称:</strong></dt>
   <dd><%= @product.name %></dd>
@@ -7,7 +8,31 @@
   <dd><%= @product.sprice %></dd>
   <dt><strong>描述:</strong></dt>
   <dd><%= @product.desc %></dd>
+
+  <dt><strong>商品图片:</strong></dt>
+  <dd>
+    <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#fileinput_bs" type="button">
+          <%= image_tag "upload-icon-green.png", alt: "" %>
+    </button>
+  </dd>
+  <dt>
+    <% @attachment = Attachment.new %>
+        <%= form_for @attachment, html: {id: "product_attachment_new", enctype: "multipart/form-data"} do |f| %>
+            <input type="file" style="display:none;" id="product_attach_file_name_uid" data-obj-name="product" name="attachment[file_name_uid]">
+            <input type="hidden" id="attachment_file_name_uid_cache" name="attachment[file_name_uid_cache]">
+            <%= hidden_field 'attachment', 'user_id', value: current_user.id %>
+            <%= hidden_field 'attachment', 'product_id', value: @product.id %>
+        <% end %>
+        <div class="new-file-content">
+          <div class="row" id="products_attachments_div">
+            <!--  loop attachment -->
+          </div>
+        </div>
+  </dt>
+   
+
 </dl>
+ 
 
 <%= link_to '返回',
               products_path, :class => 'btn btn-default'  %>
