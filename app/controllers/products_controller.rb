@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+     @product_attachments = @product.all_attachments
   end
 
   # GET /products/new

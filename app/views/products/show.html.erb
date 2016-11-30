@@ -32,6 +32,18 @@
    
 
 </dl>
+
+<div class="new-file-content">
+              <div class="row" id="projects_attachments_div">
+
+                <%
+                   @product_attachments.each do |atta|
+                      atta.each do |key,value| %>
+                      <%= render "attachment", atta: value %>
+                  <% end
+                 end%>
+              </div>
+            </div>
  
 
 <%= link_to '返回',

@@ -29,7 +29,8 @@ gem 'select2-rails', '~> 4.0', '>= 4.0.1'
 gem 'font-awesome-rails', '~> 4.3.0.0'
 
 gem 'actionpack-action_caching'
-
+gem 'carrierwave'
+gem 'mini_magick' #不使用rmagick，占内存
 
 #bootstrap
 gem 'therubyracer'

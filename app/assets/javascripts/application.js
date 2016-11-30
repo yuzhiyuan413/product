@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require fakeloader.min
+//= require jquery.lightbox
 
 function appendNotice(content){
 	$("#notice").html("<i class=\"close icon\"></i><p id=\"notice_msg\">"+content+"</p>");
@@ -27,4 +28,21 @@ $(function(){
   $(".login_container .close").click(function(){
     $(this).parent().hide();
   })
+
+  $(".lightbox").lightbox({
+        fitToScreen: true,
+        imageClickClose: false,
+        displayDownloadLink: true
+    });
+
+    $(".lightbox-2").lightbox({
+        fitToScreen: true,
+        scaleImages: true,
+        xScale: 1.2,
+        yScale: 1.2,
+        displayDownloadLink: true
+    });
+
+    $('[data-toggle="popover"]').popover()
+
 })

@@ -19,6 +19,7 @@
  *= require semantic
  *= require fakeloader
  *= require fileinput
+ *= require lightbox.css
  *= require_self
  */
 /*

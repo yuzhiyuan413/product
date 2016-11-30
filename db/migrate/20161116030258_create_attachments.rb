@@ -15,3 +15,6 @@ class CreateAttachments < ActiveRecord::Migration
     end
   end
 end
+
+
+:file_name,:file_name_uid, :file_size,:file_type, :version, :product_id, :comment_id, :shop_id, :user_id

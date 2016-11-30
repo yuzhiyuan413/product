@@ -33,11 +33,13 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  
+  get 'attachments/:id/downloadfile' => 'attachments#downloadfile', as: :downloadfile
+  get 'attachments/:id/downloadfile/:type' => 'attachments#downloadfile', as: :downloadfile_type
 
   # match '/users/auth/:provider/callback' => 'users/omniauth_callbacks#callback', via: [:get, :post]
   match '/user/auth/wechat' => 'users/omniauth_callbacks#passthru', via: [:get, :post]
   match '/user/auth/wechat/callback' => 'users/omniauth_callbacks#wechat', via: [:get, :post]
+
 
   # devise_for :users, controllers: {
   #   omniauth_callbacks: :authentications

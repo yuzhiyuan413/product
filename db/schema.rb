@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116030258) do
+ActiveRecord::Schema.define(version: 20161126195957) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file_name",     limit: 255
     t.string   "file_name_uid", limit: 255
-    t.integer  "filesize",      limit: 4
+    t.integer  "file_size",     limit: 4
+    t.string   "file_type",     limit: 255
     t.integer  "version",       limit: 4
     t.integer  "product_id",    limit: 4
     t.integer  "comment_id",    limit: 4
@@ -97,14 +98,15 @@ ActiveRecord::Schema.define(version: 20161116030258) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.float    "sprice",     limit: 24
-    t.string   "desc",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "order_id",   limit: 4
-    t.integer  "user_id",    limit: 4
-    t.integer  "shop_id",    limit: 4
+    t.string   "name",              limit: 255
+    t.float    "sprice",            limit: 24
+    t.string   "desc",              limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "order_id",          limit: 4
+    t.integer  "user_id",           limit: 4
+    t.integer  "shop_id",           limit: 4
+    t.integer  "attachments_count", limit: 4
   end
 
   create_table "shops", force: :cascade do |t|
