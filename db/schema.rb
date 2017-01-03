@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126195957) do
+ActiveRecord::Schema.define(version: 20161215094454) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file_name",     limit: 255
     t.string   "file_name_uid", limit: 255
     t.integer  "file_size",     limit: 4
-    t.string   "file_type",     limit: 255
     t.integer  "version",       limit: 4
     t.integer  "product_id",    limit: 4
     t.integer  "comment_id",    limit: 4
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161126195957) do
     t.integer  "user_id",       limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "file_type",     limit: 255
   end
 
   create_table "authentications", force: :cascade do |t|

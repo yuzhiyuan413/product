@@ -27,22 +27,20 @@ class AttachmentsController < ApplicationController
   def create
     @attachment = Attachment.new(attachment_params)
     product_id = params[:product_id]
-    @attachment[:product_id] = product_id  unless product_id.blank?
+    @attachment.product_id = product_id  unless product_id.blank?
     @attachment.update(
       user_id: params[:user_id],
       product_id: product_id, 
-      file_type: params[:filetype]
+      file_type: params[:file_type]
     ) if params[:uploadtype].eql?('bst')
     @attachment.file_name=@attachment.get_originalfile.file_name
     p "params:#{params.to_s}"
     @attachment.rotate = true
     # respond_to do |format|
-    path = "/products/#{product_id}" unless product_id.blank?
+    path = params[:submittype] == "remote" ? @attachment : "/products/#{product_id}"
     respond_to do |format|
       if @attachment.save
         @attachment.update(file_size: @attachment.get_filesize)
-        submitType = params[:submittype]
-        path = submitType == "remote" ? @attachment : "/products/#{product_id}"
         format.html{ redirect_to path, notice: '上传成功.' }
       else
         format.html{ redirect_to path, notice: '上传成功.' }  
@@ -113,8 +111,7 @@ class AttachmentsController < ApplicationController
         response.headers['Content-Type'] = "application/octet-stream"
         response.headers['Content-Dispostion'] = "attachment;filename="+path
         render :nothing => true
-        file_path = Rails.root.to_s + path
-        send_file(file_path,filename: atta.file_name, dispostion: "inline", status: 200, stream: true, x_sendfile: true )
+        send_file(Rails.root.join(path).to_s, filename: atta.file_name, dispostion: "inline", status: 200, stream: true, x_sendfile: true )
       else
         redirect_to product_path(atta.product_id),notice: '下载失败!!!'
         # render :file => "#{Rails.root.to_s}/public/404.html"
