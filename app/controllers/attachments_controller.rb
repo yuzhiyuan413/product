@@ -28,11 +28,10 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.new(attachment_params)
     product_id = params[:product_id]
     @attachment.product_id = product_id  unless product_id.blank?
-    @attachment.update(
-      user_id: params[:user_id],
-      product_id: product_id, 
-      file_type: params[:file_type]
-    ) if params[:uploadtype].eql?('bst')
+    @attachment.tap do |x|
+      x.user_id = params[:user_id],
+      x.file_type = params[:file_type]
+    end if params[:uploadtype].eql?('bst')
     @attachment.file_name=@attachment.get_originalfile.file_name
     p "params:#{params.to_s}"
     @attachment.rotate = true
