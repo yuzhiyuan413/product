@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   after_action :clear_caches, only: [:create, :update, :destroy]
-  caches_action :index, cache_path: Proc.new { {cache_id: current_user.id } }
+  caches_action :index, cache_path: Proc.new { |cache_id| {cache_id: current_user.id }}
+  # caches_action :index, expires_in: 1.hour
   # GET /products
   # GET /products.json
   def index
